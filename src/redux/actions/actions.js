@@ -7,8 +7,12 @@ export const deleteUser = id => ({
      type: types.DELETE_USER,
      id
 });
-export const updateUser = id => user => ({
-     type: types.UPDATE_USER,id,user
+export const updateUser = user => ({
+     type: types.UPDATE_USER,
+     payload:{
+          id:user.id,
+          user
+     }
      
 });
 

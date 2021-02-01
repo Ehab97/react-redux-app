@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateUser } from "../redux/actions/actions";
 class EditUser extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -12,21 +13,20 @@ class EditUser extends Component {
       password: "",
       department: "",
       phone: 0,
-      // id: 0,
-      // userUpdate:{}
+      id: 0,
+      checker:'',
+      bool:0
     };
-    this.name=React.createRef();
-     this.input = React.createRef();
   }
   handleChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.alue,
+      [e.target.name]: e.target.value,
     });
   };
   handleSubmit = (e) => {
       e.preventDefault();
-      // let id=match.params.id;
-      const user = this.props.user;
+      let id=this.props.match.params.id;
+      // const user = this.props.user;
       let userUpdate = {
         name: this.state.name,
         fName: this.state.fNname,
@@ -35,16 +35,14 @@ class EditUser extends Component {
         phone: this.state.phone,
         password: this.state.password,
         department: this.state.department,
-        // id: match.params.id,
+        id: id,
       };
-      //  userUpdate={...userUpdate,user}
-      console.log(userUpdate,user);
-    // this.props.updateUser(userUpdate);
-    // this.props.history.push("/home");
+      // const userUpdate2=Object.assign({}, userUpdate)
+      // console.log(userUpdate,'asigned one',userUpdate2);
+    this.props.updateUser(userUpdate);
+    this.props.history.push("/home");
   };
-  render() {
-    const user = this.props.user;
-    
+  render() {   
     return (
       <div className="container">
         <div className="row">
@@ -55,7 +53,7 @@ class EditUser extends Component {
                 <input
                   type="text"
                   className="form-control"
-                  defaultValue={user.name}
+                  // defaultValue={user.name}
                   name="name"
                   onChange={this.handleChange}
                 />
@@ -65,7 +63,7 @@ class EditUser extends Component {
                 <input
                   type="text"
                   className="form-control"
-                  defaultValue={user.fName}
+                  // defaultValue={user.fName}
                   name="fName"
                   onChange={this.handleChange}
                 />
@@ -75,7 +73,7 @@ class EditUser extends Component {
                 <input
                   type="text"
                   className="form-control"
-                  defaultValue={user.lName}
+                  // defaultValue={user.lName}
                   name="lName"
                   onChange={this.handleChange}
                 />
@@ -85,7 +83,7 @@ class EditUser extends Component {
                 <input
                   type="text"
                   className="form-control"
-                  defaultValue={user.mail}
+                  // defaultValue={user.mail}
                   name="mail"
                   onChange={this.handleChange}
                 />
@@ -95,7 +93,7 @@ class EditUser extends Component {
                 <input
                   type="text"
                   className="form-control"
-                  defaultValue={user.phone}
+                  // defaultValue={user.phone}
                   name="phone"
                   onChange={this.handleChange}
                 />
@@ -104,7 +102,7 @@ class EditUser extends Component {
                 <label>select department</label>
                 <select
                   className="form-control"
-                  defaultValue={this.state.department}
+                  // defaultValue={this.state.department}
                   name="department"
                   onChange={this.handleChange}
                 >
@@ -119,7 +117,7 @@ class EditUser extends Component {
                 <input
                   type="password"
                   className="form-control"
-                  defaultValue={user.password}
+                  // defaultValue={user.password}
                   name="password"
                   onChange={this.handleChange}
                 />
@@ -138,10 +136,5 @@ class EditUser extends Component {
     );
   }
 }
-const mapStateToProps = (state, ownProps) => {
-  let id = ownProps.match.params.id;
-  return {
-    user: state.users.find((user) => user.id == id),
-  };
-};
-export default connect(mapStateToProps)(EditUser);
+
+export default connect(null,{updateUser})(EditUser);

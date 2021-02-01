@@ -31,3 +31,9 @@ form button{
   padding: 5px;
 }
 .hidden { display:none; }
+.notFound{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

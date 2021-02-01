@@ -26,46 +26,6 @@ class CreateUser extends Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    //auth
-    // if (this.state.name.length < 5) {
-    //   return (
-    //      this.state.checker = "user name must not be less than four",
-    //      this.state.bool=1,console.log(this.state.checker,this.state.bool)
-    //   );
-    // } else if (
-    //   this.state.fName.length < 3 ||
-    //   !checkLetter(this.state.fName) ||
-    //   this.state.lastName.length < 3 ||
-    //   !checkLetter(this.state.lName)
-    // ) {
-    //   return (this.state.checker =
-    //     "last name and first name  must not be less than 5 and start with charactar");
-    // } else if (!checkePassword(this.state.password)) {
-    //   return (this.state.checker =
-    //     "password must not be less than 8 or numbers and must contain at leastone character capital, one number and one special character");
-    // } else if (!ValidateEmail(this.state.email)) {
-    //   return (this.state.checker = "Enter valid  email please");
-    // } else if (!validatePhone(this.state.phone)||!isExistPhone(this.state.phone)) {
-    //   return (this.state.checker = "Enter valid phone number please");
-    // }else if (this.state.department.length <1) {
-    //   return this.state.checker = "select department";
-    // } else{
-    //   const user = {
-    //     name: this.state.name,
-    //     fName: this.state.fNname,
-    //     lName: this.state.lName,
-    //     mail: this.state.mail,
-    //     phone: this.state.phone,
-    //     password: this.state.password,
-    //     department: this.state.department,
-    //     id: newId(),
-    //   };
-  
-    //   console.log(user);
-    //   this.props.addUser(user);
-    //   this.props.history.push("/home");
-    // }
-    //end auth
     const user = {
       name: this.state.name,
       fName: this.state.fNname,

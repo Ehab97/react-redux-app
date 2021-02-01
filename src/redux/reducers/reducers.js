@@ -41,17 +41,10 @@ export default function reducer(state = intialState, action) {
                let newUsers = state.users.filter(user => action.id != user.id)
                return {...state, users: newUsers}
           case types.UPDATE_USER:
-               return state.users.map((user, id) => {
-                    if (id !== action.id) {
-                      // This isn't the item we care about - keep it as-is
-                      return user
-                    }
-                    // Otherwise, this is the one we want - return an updated value
-                    return {
-                      ...user,
-                      ...action.user
-                    }
-                  })
+               let newUser=[...state.users];
+               const index=state.users.findIndex(user=>user.id==action.payload.id);
+               newUser.splice(index,1);
+               return {users:[...newUser,action.payload.user]}
           default:
                return state;
      }
